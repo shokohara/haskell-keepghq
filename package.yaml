@@ -1,11 +1,11 @@
-name: rbac
+name: keepghq
 version: '0.1.0.0'
 category: Web
 author: Author name here
 maintainer: example@example.com
 copyright: 2017 Author name here
 license: BSD3
-github: shokohara/haskell-rbac
+github: shokohara/haskell-keepghq
 extra-source-files:
 - README.md
 library:
@@ -17,12 +17,12 @@ library:
   - text
   - monad-logger
   - transformers
+  - directory
+  - process
+  - MissingH
   - lens
-  - gogol
-  - gogol-core
-  - gogol-compute
 executables:
-  rbac-exe:
+  keepghq-exe:
     main: Main.hs
     source-dirs: app
     ghc-options:
@@ -31,10 +31,10 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - base
-    - rbac
+    - keepghq
     - text
 tests:
-  rbac-test:
+  keepghq-test:
     main: Spec.hs
     source-dirs: test
     ghc-options:
@@ -43,7 +43,7 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - base
-    - rbac
+    - keepghq
     - hspec
     - hspec-discover
     - bytestring
