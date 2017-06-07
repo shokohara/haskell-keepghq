@@ -12,10 +12,6 @@ import Data.String.Utils
 run :: IO ()
 run = do
   putStrLn "start"
-  cwd <- getCurrentDirectory
-  directories <- listDirectory cwd
-  mapM_ putStrLn $ directories
---  pwd <- strip <$> readCreateProcess (shell "pwd") ""
---  readCreateProcess (shell "ls") "" >>= putStrLn
-  mapM (\pwd -> readCreateProcess (shell $ "git -C " ++ pwd ++ " status") "" >>= putStrLn) directories
+  dirs <- lines <$> readCreateProcess (shell $ "find . -maxdepth 1 -type d") ""
+  mapM (\pwd -> readCreateProcess (shell $ "git -C " ++ pwd ++ " status") "" >>= putStrLn) dirs
   return ()
